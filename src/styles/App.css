@@ -28,5 +28,5 @@ li.list-group-item {
 li.list-group-item a {
   display: block;
   width: 100%;
-  height: 100%;
+  line-height: 40px;
 }
