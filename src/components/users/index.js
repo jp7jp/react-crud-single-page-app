@@ -11,7 +11,7 @@ class UsersIndex extends Component {
 
   renderRow(user) {
     return (
-      <li className="list-group-item" key={user._id}>
+      <li className={ (this.props.user && (user._id === this.props.user._id)) ? 'list-group-item active' : 'list-group-item'} key={user._id}>
         <Link to={`/users/${user._id}`}>{user.email}</Link>
       </li>
     )
@@ -40,6 +40,7 @@ class UsersIndex extends Component {
 
 function mapStateToProps(state) {
   return {
+    user: state.users.user,
     users: state.users.all,
     error: state.users.error
   }

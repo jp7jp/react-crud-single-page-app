@@ -29,4 +29,13 @@ li.list-group-item a {
   display: block;
   width: 100%;
   line-height: 40px;
+  text-decoration: none;
+}
+
+li.list-group-item:hover {
+  background-color: #eee;
+}
+
+li.list-group-item.active a {
+  color: #fff;
 }
