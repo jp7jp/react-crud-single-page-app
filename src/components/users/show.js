@@ -28,10 +28,7 @@ class UsersShow extends Component {
       <div id="user-show" className="well">
 
         <div className="clearfix">
-          <div className="btn-group pull-right">
-            <Link to={`/users/${user._id}/edit`} className="btn btn-primary">Edit</Link>
-            <Link to={`/users/${user._id}/delete`} className="btn btn-danger">Remove</Link>
-          </div>
+          <Link to={`/users/${user._id}/delete`} className="btn btn-danger pull-right">Remove</Link>
           <h3 className="pull-left">Show User</h3>
         </div>
 
@@ -41,6 +38,8 @@ class UsersShow extends Component {
           <dt>Password:</dt>
           <dd>{ user.password }</dd>
         </dl>
+
+        <Link to={`/users/${user._id}/edit`} className="btn btn-primary">Edit</Link>
       </div>
     );
   }

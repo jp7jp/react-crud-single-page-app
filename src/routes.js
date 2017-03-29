@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import UsersBlank from './components/users/blank.js';
 import UsersIndex from './components/users/index.js';
 import UsersShow from './components/users/show.js';
 import UsersNew from './components/users/new.js';
@@ -14,6 +15,7 @@ const Routes = () => (
     </div>
     <div className="col-md-8">
       <Switch>
+        <Route exact path="/users" component={UsersBlank} />
         <Route exact path="/users/new" component={UsersNew} />
         <Route exact path="/users/:id" component={UsersShow} />
         <Route exact path="/users/:id/edit" component={UsersEdit} />
