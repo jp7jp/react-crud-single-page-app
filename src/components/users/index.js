@@ -5,8 +5,16 @@ import { getAllUsers } from '../../actions';
 
 class UsersIndex extends Component {
 
+  state = {
+    loading: true
+  }
+
   componentWillMount() {
-    this.props.getAllUsers();
+    this.props.getAllUsers().then(() => {
+      this.setState({
+        loading: false
+      })
+    });
   }
 
   renderRow(user) {
@@ -21,7 +29,7 @@ class UsersIndex extends Component {
     if(this.props.error) {
       return <div>{this.props.error}</div>
     }
-    if(!this.props.users.length) {
+    if(this.state.loading) {
       return <div>Loading...</div>
     }
     return (
@@ -30,9 +38,14 @@ class UsersIndex extends Component {
           <Link to='/users/new' className="pull-right btn btn-primary">Create User</Link>
           <h3>List Users</h3>
         </div>
-        <ul className="list-group">
-          { this.props.users.map(user => this.renderRow(user)) }
-        </ul>
+        {
+          (this.props.users.length) ?
+            <ul className="list-group">
+              { this.props.users.map(user => this.renderRow(user)) }
+            </ul>
+          :
+            <div>No users on database</div>
+        }
       </div>
     );
   }
